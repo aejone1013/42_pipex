@@ -90,20 +90,19 @@ all:		${NAME}
 
 ${NAME}: 	${OBJS}
 			@echo "\n$(NAME): $(GREEN)$(NAME) was created$(RESET)"
-			ar -rcs ${NAME} ${OBJS}
+			@ar -rcs ${NAME} ${OBJS}
 
 .c.o:
-			@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
-			${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+			@${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 clean:
 			@echo "\n$(NAME): $(RED)object files were deleted$(RESET)"
-			${REMOVE} ${OBJS} ${BONUS_OBJS}
+			@${REMOVE} ${OBJS} ${BONUS_OBJS}
 			@echo
 
 fclean:		clean
 			@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
-			${REMOVE} ${NAME}
+			@${REMOVE} ${NAME}
 			@echo
 
 .PHONY:		all clean fclean re
