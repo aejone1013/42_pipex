@@ -6,7 +6,7 @@
 #    By: jaoh <jaoh@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/11 13:17:28 by jaoh              #+#    #+#              #
-#    Updated: 2024/10/15 15:38:55 by jaoh             ###   ########.fr        #
+#    Updated: 2024/10/22 08:09:57 by jaoh             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,18 +45,19 @@ LIBFT		= $(LIBFT_PATH)libft.a
 VALGRIND		= @valgrind --leak-check=full --show-leak-kinds=all \
 --track-origins=yes --quiet --tool=memcheck --keep-debuginfo=yes
 
-all: $(NAME)
+all: 	$(NAME)
 
 $(NAME): $(OBJS)
 	@make -C $(LIBFT_PATH)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${B_NAME}${RESET}]: ${RED}${BOLD}${B_NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
+	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
+bonus :	$(B_NAME)
 
-bonus: $(B_OBJS)
+$(B_NAME) : $(B_OBJS)
 	@make -C $(LIBFT_PATH)
-	@$(CC) $(CFLAGS) $(B_OBJS) $(LIBFT) -o $(NAME)
-	@printf "${CLEAR}${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Objects were cleaned ${GREEN}successfully${RESET}.\n${RESET}"
+	@$(CC) $(CFLAGS) $(B_OBJS) $(LIBFT) -o $(B_NAME)
+	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${B_NAME}${RESET}]: ${RED}${BOLD}${B_NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -I$(LIBFT_PATH) -c $< -o $@
