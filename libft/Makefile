@@ -38,6 +38,7 @@ SRCS 		= ft_isalpha.c 			\
 			ft_tolower.c 			\
 			ft_strchr.c 			\
 			ft_strrchr.c 			\
+			ft_strcmp.c				\
 			ft_strncmp.c			\
 			ft_memchr.c				\
 			ft_memcmp.c				\
@@ -73,7 +74,6 @@ SRCS 		= ft_isalpha.c 			\
 			ft_hex_length.c			\
 			ft_decimal_length.c		\
 			ft_decimal_converter_to_hex.c \
-			ft_free_matrix.c \
 			ft_lstnew.c	\
 			ft_lstadd_front.c	\
 			ft_lstsize.c		\

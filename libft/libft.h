@@ -42,6 +42,7 @@ int		ft_toupper(int argument);
 int		ft_tolower(int argument);
 char	*ft_strchr(const char *str, int argument);
 char	*ft_strrchr(const char *str, int argument);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t size);
 void	*ft_memchr(const void *str, int argument, size_t size);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -84,6 +85,5 @@ void	ft_free_ptr(char **ptr);
 char	ft_decimal_converter_to_hex(char digit, char type);
 int		ft_hex_length(unsigned long nbr);
 int		ft_print_reversed_str(char *str);
-void	ft_free_matrix(char ***m);
 
 #endif

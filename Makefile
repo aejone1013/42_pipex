@@ -5,12 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jaoh <jaoh@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/11 13:17:28 by jaoh              #+#    #+#              #
-#    Updated: 2024/10/22 08:09:57 by jaoh             ###   ########.fr        #
+#    Created: 2024/10/29 11:05:30 by jaoh              #+#    #+#              #
+#    Updated: 2024/10/29 11:42:56 by jaoh             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Colors constants
 PURPLE			= \033[38;5;141m
 GREEN			= \033[38;5;46m
 RED				= \033[0;31m
@@ -19,17 +18,19 @@ RESET			= \033[0m
 BOLD			= \033[1m
 CLEAR			= \r\033[K
 
-NAME 		= pipex
+NAME			= pipex
+B_NAME			=
 
-SRC_FILE	= pipex \
-				pipex_utils \
-				main
-				
+SRC_FILE		= ft_err_utils \
+					ft_unix_utils \
+					ft_exec_utils \
+					main
+
 SRCS 		= $(addprefix srcs/, $(addsuffix .c, $(SRC_FILE)))
 
 OBJS		= $(SRCS:.c=.o)
 
-B_SRC_FILE		=
+B_SRC_FILE	=
 
 B_SRCS		= $(addprefix bonus/, $(addsuffix .c, $(B_SRC_FILE)))
 
@@ -42,17 +43,14 @@ CFLAGS		= -Wall -Wextra -Werror
 LIBFT_PATH	= libft/
 LIBFT		= $(LIBFT_PATH)libft.a
 
-VALGRIND		= @valgrind --leak-check=full --show-leak-kinds=all \
---track-origins=yes --quiet --tool=memcheck --keep-debuginfo=yes
-
-all: 	$(NAME)
+all: 			$(NAME)
 
 $(NAME): $(OBJS)
 	@make -C $(LIBFT_PATH)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
-bonus :	$(B_NAME)
+bonus : $(B_NAME)
 
 $(B_NAME) : $(B_OBJS)
 	@make -C $(LIBFT_PATH)
