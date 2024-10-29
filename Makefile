@@ -6,7 +6,7 @@
 #    By: jaoh <jaoh@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 11:05:30 by jaoh              #+#    #+#              #
-#    Updated: 2024/10/29 11:42:56 by jaoh             ###   ########.fr        #
+#    Updated: 2024/10/29 12:36:21 by jaoh             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,29 +19,32 @@ BOLD			= \033[1m
 CLEAR			= \r\033[K
 
 NAME			= pipex
-B_NAME			=
+B_NAME			= pipex_bonus
 
-SRC_FILE		= ft_err_utils \
-					ft_unix_utils \
-					ft_exec_utils \
-					main
+SRC_FILE		= pipex \
+					pipex_error \
+					pipex_exec \
+					pipex_unix
 
-SRCS 		= $(addprefix srcs/, $(addsuffix .c, $(SRC_FILE)))
+SRCS 			= $(addprefix srcs/, $(addsuffix .c, $(SRC_FILE)))
 
-OBJS		= $(SRCS:.c=.o)
+OBJS			= $(SRCS:.c=.o)
 
-B_SRC_FILE	=
+B_SRC_FILE		=	pipex_bonus \
+					pipex_error_bonus \
+					pipex_exec_bonus \
+					pipex_unix_bonus
 
-B_SRCS		= $(addprefix bonus/, $(addsuffix .c, $(B_SRC_FILE)))
+B_SRCS			= $(addprefix bonus/, $(addsuffix .c, $(B_SRC_FILE)))
 
-B_OBJS		= $(B_SRCS:.c=.o)
+B_OBJS			= $(B_SRCS:.c=.o)
 
-CC			= gcc
+CC				= gcc
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror
 
-LIBFT_PATH	= libft/
-LIBFT		= $(LIBFT_PATH)libft.a
+LIBFT_PATH		= libft/
+LIBFT			= $(LIBFT_PATH)libft.a
 
 all: 			$(NAME)
 
@@ -71,4 +74,6 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all bonus clean fclean re
+rebonus : fclean bonus
+
+.PHONY : all bonus clean fclean re rebonus
